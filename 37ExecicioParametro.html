@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+       function realizaCalculo(){
+        var numero1 = 1 * document.getElementById("numero1").value;
+        var numero2 = 1 * document.getElementById("numero2").value;
+        var operacao = 1 * document.getElementById("operacao").value;
+        if (operacao == 1){
+            alert(numero1+numero2);
+        }else if (operacao == 2){
+            alert(numero1-numero2)
+        }else if (operacao == 3){
+            alert(numero1*numero2)
+        }else if (operacao == 4){
+            alert(numero1/numero2)
+       }
+    }
+    </script>
+</head>
+<body>
+   <form>
+    <input type="number" placeholder="Numero 1" id="numero1">
+    <br>
+    <input type="number" placeholder="Numero 2" id="numero2">
+    <br>
+    <input type="number" placeholder="Operação" id="operacao">
+    <label>1 = soma, 2 = subtração, 3 = multiplicação 4 = divisão</label>
+    <br>
+    <button onclick="realizaCalculo()">Calcular</button>
+   </form> 
+</body>
+</html>
