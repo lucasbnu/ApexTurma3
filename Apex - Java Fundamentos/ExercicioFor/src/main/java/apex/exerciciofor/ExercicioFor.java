@@ -22,5 +22,15 @@ public class ExercicioFor {
             }
         }
         JOptionPane.showMessageDialog(null, "Você acertou "+acertos+" vezes a senha!");
+        switch (var) {
+            case "CHAPEU":
+                
+                break;
+            case "PICAPAU":
+                 
+                break;
+            default:
+               
+        }
     }
 }
