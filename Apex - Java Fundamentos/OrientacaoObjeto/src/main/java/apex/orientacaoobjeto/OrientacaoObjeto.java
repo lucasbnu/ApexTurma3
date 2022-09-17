@@ -21,7 +21,7 @@ public class OrientacaoObjeto {
         
        Pessoa p1 = new Pessoa(23);
        p1.setNome("Jose");
-       p1.nome = "lucas";
+       
        String nomeLocal = p1.getNome();
        carro c1 = new carro();
        p1.setNome("Pedro");

@@ -3,6 +3,7 @@ package apex.orientacaoobjeto;
 import javax.swing.JOptionPane;
 
 public class carro {
+
   public String Marca;
   public String Modelo;
   public void imprimeCarro(){
