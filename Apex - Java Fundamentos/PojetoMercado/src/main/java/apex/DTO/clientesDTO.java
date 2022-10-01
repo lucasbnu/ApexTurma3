@@ -1,6 +1,6 @@
 package apex.DTO;
 
-public class clientesDTO {
+public class ClientesDTO {
    private int id_cliente;
    private String nome_cliente;
    private int idade;

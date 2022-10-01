@@ -4,6 +4,9 @@
  */
 package apex.view;
 
+import apex.DAO.ClientesDAO;
+import apex.DAO.ConexaoDAO;
+import apex.DTO.ClientesDTO;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,7 +43,7 @@ public class telaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\Downloads\\carrinho.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\apex\\ApexTurma3\\Apex - Java Fundamentos\\PojetoMercado\\carrinho.png")); // NOI18N
 
         mnVendas.setText("Vendas");
 
@@ -55,6 +58,11 @@ public class telaPrincipal extends javax.swing.JFrame {
         mnClientes.setText("Clientes");
 
         mnCadastrarCliente.setText("Cadastrar");
+        mnCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCadastrarClienteActionPerformed(evt);
+            }
+        });
         mnClientes.add(mnCadastrarCliente);
 
         mnPrincipal.add(mnClientes);
@@ -72,21 +80,27 @@ public class telaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastrarClienteActionPerformed
+         ClientesView tela = new ClientesView();
+         tela.setVisible(true);
+      
+    }//GEN-LAST:event_mnCadastrarClienteActionPerformed
 
     /**
      * @param args the command line arguments
