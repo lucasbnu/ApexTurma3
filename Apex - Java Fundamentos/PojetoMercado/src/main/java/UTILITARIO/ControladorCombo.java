@@ -17,22 +17,23 @@ import javax.swing.JOptionPane;
 public class ControladorCombo{
     private String Comando;
     private JComboBox<String> Combo;
-    ControladorCombo(JComboBox Combo,String Comando){
+    public ControladorCombo(JComboBox Combo,String Comando){
         this.Comando = Comando;
         this.Combo = Combo;
     }
     public void carregadados(){
         ConexaoDAO con = new ConexaoDAO();
         ResultSet rs = con.retornaDados(Comando);
+        Combo.removeAllItems();
         try{
             while(rs.next()){
-                String nome = rs.getString(0);
+                String nome = rs.getString(2);
                 String id = rs.getString(1);
                 String dados = id + " - " + nome;
                 Combo.addItem(dados);
             }
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Erro ao carregar dados");
+            JOptionPane.showMessageDialog(null, e.getMessage()+ " Erro ao carregar dados");
         }
     }
 
