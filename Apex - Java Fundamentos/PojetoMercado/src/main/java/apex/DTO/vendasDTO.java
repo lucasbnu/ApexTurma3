@@ -1,6 +1,6 @@
 package apex.DTO;
 
-public class vendasDTO {
+public class VendasDTO {
   private int id_venda;   
   private int fk_produto; 
   private int fk_cliente; 

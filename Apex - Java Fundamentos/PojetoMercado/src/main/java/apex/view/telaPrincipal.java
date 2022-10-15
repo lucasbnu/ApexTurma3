@@ -48,6 +48,11 @@ public class telaPrincipal extends javax.swing.JFrame {
         mnVendas.setText("Vendas");
 
         mnRealizarVenda.setText("Realizar venda");
+        mnRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnRealizarVendaActionPerformed(evt);
+            }
+        });
         mnVendas.add(mnRealizarVenda);
 
         mnConsultaVenda.setText("Consultar venda");
@@ -111,6 +116,11 @@ public class telaPrincipal extends javax.swing.JFrame {
        ProdutosView tela = new ProdutosView();
        tela.setVisible(true);
     }//GEN-LAST:event_mnCadastrarProdutoActionPerformed
+
+    private void mnRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnRealizarVendaActionPerformed
+        VendasView tela = new VendasView();
+        tela.setVisible(true);
+    }//GEN-LAST:event_mnRealizarVendaActionPerformed
 
     /**
      * @param args the command line arguments
