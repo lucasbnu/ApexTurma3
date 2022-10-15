@@ -1,32 +1,32 @@
 package apex.view;
 
 import UTILITARIO.CRUDUtil;
-import apex.DAO.ClientesDAO;
-import apex.DTO.ClientesDTO;
+import apex.DAO.ProdutosDAO;
+import apex.DTO.ProdutosDTO;
 import javax.swing.JOptionPane;
 
 
-public class ClientesView extends javax.swing.JFrame {
+public class ProdutosView extends javax.swing.JFrame {
     private int ModoOperacao; // 0  = vizualizacao (PADRÃO)
                               // 1  = novo 
                               // 2  = alteracao
     private void limpaCampos(){
-        tfid_Cliente.setText("");
-        tfnome_cliente.setText("");
-        tfIdade.setText("");
+        tfid_Produto.setText("");
+        tfdescricao_produto.setText("");
+        tfPreco.setText("");
         tfAtivo.setText("");
     }
-    ClientesDTO cliente = new ClientesDTO();
-    private void preencheCliente(){
+    ProdutosDTO produto = new ProdutosDTO();
+    private void preencheProduto(){
         
         if (ModoOperacao != 1){
-          cliente.setId_cliente( Integer.parseInt(tfid_Cliente.getText()) );
+          produto.setId_produto( Integer.parseInt(tfid_Produto.getText()) );
         }
         
         
-        cliente.setNome_cliente( tfnome_cliente.getText() );
-        cliente.setIdade( Integer.parseInt(tfIdade.getText()) );
-        cliente.setAtivo(Integer.parseInt(tfAtivo.getText()) );
+        produto.setDescricao_produto( tfdescricao_produto.getText() );
+        produto.setPreco(Double.parseDouble(tfPreco.getText()) );
+        produto.setAtivo(Integer.parseInt(tfAtivo.getText()) );
         
     }
     private void alteraModoOperacao( int ModoOperacao){
@@ -36,8 +36,8 @@ public class ClientesView extends javax.swing.JFrame {
         }
         boolean alterando = ModoOperacao > 0;
         tfAtivo.setEditable(alterando);
-        tfIdade.setEditable(alterando);
-        tfnome_cliente.setEditable(alterando);
+        tfPreco.setEditable(alterando);
+        tfdescricao_produto.setEditable(alterando);
         btnCancelar.setEnabled(alterando);
         btnConfirmar.setEnabled(alterando);
         btnNovo.setEnabled(!alterando);
@@ -47,7 +47,7 @@ public class ClientesView extends javax.swing.JFrame {
     }
     
 
-    public ClientesView() {
+    public ProdutosView() {
         initComponents();
     }
 
@@ -62,11 +62,11 @@ public class ClientesView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        tfid_Cliente = new javax.swing.JTextField();
-        tfnome_cliente = new javax.swing.JTextField();
+        tfid_Produto = new javax.swing.JTextField();
+        tfdescricao_produto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfIdade = new javax.swing.JTextField();
+        tfPreco = new javax.swing.JTextField();
         tfAtivo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaClientes = new javax.swing.JTable();
@@ -83,19 +83,24 @@ public class ClientesView extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Identificador cliente");
+        jLabel1.setText("Identificador produto");
 
-        jLabel2.setText("Nome do Cliente");
+        jLabel2.setText("Descricao produto");
 
-        tfid_Cliente.setEditable(false);
+        tfid_Produto.setEditable(false);
 
-        tfnome_cliente.setEditable(false);
+        tfdescricao_produto.setEditable(false);
 
-        jLabel3.setText("Idade");
+        jLabel3.setText("Preço");
 
         jLabel4.setText("Ativo");
 
-        tfIdade.setEditable(false);
+        tfPreco.setEditable(false);
+        tfPreco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfPrecoActionPerformed(evt);
+            }
+        });
 
         tfAtivo.setEditable(false);
 
@@ -170,19 +175,22 @@ public class ClientesView extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfid_Cliente)
-                                    .addComponent(tfnome_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                                .addGap(44, 44, 44)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(tfdescricao_produto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tfid_Produto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(35, 35, 35)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tfIdade)
+                                    .addComponent(tfPreco)
                                     .addComponent(tfAtivo, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovo)
@@ -198,13 +206,13 @@ public class ClientesView extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tfid_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfid_Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(tfIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tfnome_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfdescricao_produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(tfAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -237,12 +245,12 @@ public class ClientesView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        preencheCliente();
+        preencheProduto();
         if (ModoOperacao == 1){
-            ClientesDAO.Insere(cliente);
+            ProdutosDAO.Insere(produto);
             JOptionPane.showMessageDialog(this, "Registro inserido com sucesso!");
         }else if(ModoOperacao == 2){
-            ClientesDAO.atualizaCliente(cliente);
+            ProdutosDAO.atualizaProduto(produto);
             JOptionPane.showMessageDialog(this, "Registro alterado com sucesso!");
         }
         alteraModoOperacao(0);
@@ -250,29 +258,33 @@ public class ClientesView extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
-        listaClientes.setModel(CRUDUtil.resultSetToTableModel(ClientesDAO.retornaClientes()));
+        listaClientes.setModel(CRUDUtil.resultSetToTableModel(ProdutosDAO.retornaProdutos()));
     }//GEN-LAST:event_formWindowActivated
 
     private void listaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaClientesMouseClicked
         if (ModoOperacao == 0){
-          tfid_Cliente.setText( listaClientes.getValueAt(listaClientes.getSelectedRow(), 0).toString() );
-          tfnome_cliente.setText( listaClientes.getValueAt(listaClientes.getSelectedRow(), 1).toString() );
-          tfIdade.setText( listaClientes.getValueAt(listaClientes.getSelectedRow(), 2).toString() );
+          tfid_Produto.setText( listaClientes.getValueAt(listaClientes.getSelectedRow(), 0).toString() );
+          tfdescricao_produto.setText( listaClientes.getValueAt(listaClientes.getSelectedRow(), 1).toString() );
+          tfPreco.setText( listaClientes.getValueAt(listaClientes.getSelectedRow(), 2).toString() );
           tfAtivo.setText( listaClientes.getValueAt(listaClientes.getSelectedRow(), 3).toString() );
         }
     }//GEN-LAST:event_listaClientesMouseClicked
 
     private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
-           String mensagem = "Você realmente deseja apagar o cliente:\n"+
-                   tfnome_cliente.getText()+"\n"+
+           String mensagem = "Você realmente deseja apagar o produto:\n"+
+                   tfdescricao_produto.getText()+"\n"+
                    "Essa ação não pode ser desfeita!";
         
-        if (JOptionPane.showConfirmDialog(this, mensagem,"Apagando cliente",0,2) == 0){
-           preencheCliente();
-           ClientesDAO.apaga(cliente);
+        if (JOptionPane.showConfirmDialog(this, mensagem,"Apagando produto",0,2) == 0){
+           preencheProduto();
+           ProdutosDAO.apaga(produto);
            alteraModoOperacao(0);
         }
     }//GEN-LAST:event_btnApagarActionPerformed
+
+    private void tfPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPrecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfPrecoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,20 +303,21 @@ public class ClientesView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientesView().setVisible(true);
+                new ProdutosView().setVisible(true);
             }
         });
     }
@@ -322,8 +335,8 @@ public class ClientesView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listaClientes;
     private javax.swing.JTextField tfAtivo;
-    private javax.swing.JTextField tfIdade;
-    private javax.swing.JTextField tfid_Cliente;
-    private javax.swing.JTextField tfnome_cliente;
+    private javax.swing.JTextField tfPreco;
+    private javax.swing.JTextField tfdescricao_produto;
+    private javax.swing.JTextField tfid_Produto;
     // End of variables declaration//GEN-END:variables
 }

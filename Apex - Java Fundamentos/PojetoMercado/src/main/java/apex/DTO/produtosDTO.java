@@ -1,6 +1,6 @@
 package apex.DTO;
 
-public class produtosDTO {
+public class ProdutosDTO {
    private int id_produto;
    private String descricao_produto;
    private double preco;

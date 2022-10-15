@@ -70,6 +70,11 @@ public class telaPrincipal extends javax.swing.JFrame {
         mnProdutos.setText("Produtos");
 
         mnCadastrarProduto.setText("Cadastar");
+        mnCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnCadastrarProdutoActionPerformed(evt);
+            }
+        });
         mnProdutos.add(mnCadastrarProduto);
 
         mnPrincipal.add(mnProdutos);
@@ -101,6 +106,11 @@ public class telaPrincipal extends javax.swing.JFrame {
          tela.setVisible(true);
       
     }//GEN-LAST:event_mnCadastrarClienteActionPerformed
+
+    private void mnCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnCadastrarProdutoActionPerformed
+       ProdutosView tela = new ProdutosView();
+       tela.setVisible(true);
+    }//GEN-LAST:event_mnCadastrarProdutoActionPerformed
 
     /**
      * @param args the command line arguments
