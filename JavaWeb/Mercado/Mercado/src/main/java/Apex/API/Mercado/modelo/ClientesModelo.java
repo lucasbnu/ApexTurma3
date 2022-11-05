@@ -1,12 +1,14 @@
 package Apex.API.Mercado.modelo;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table(name = "clientes")
+@Entity
 public class ClientesModelo {
 	
    public int getId_cliente() {

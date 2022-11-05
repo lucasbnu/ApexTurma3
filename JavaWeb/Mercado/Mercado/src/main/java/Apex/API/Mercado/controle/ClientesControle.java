@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import Apex.API.Mercado.modelo.ClientesModelo;
 import Apex.API.Mercado.repositorio.ClientesRepositorio;
 
-@RestController
+
 @RequestMapping("/clientes")
+@RestController
 public class ClientesControle {
 	@Autowired
 	ClientesRepositorio rep;
