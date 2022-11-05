@@ -1,9 +1,11 @@
 package Apex.API.Mercado.controle;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,4 +24,11 @@ public class ClientesControle {
 		return rep.findAll();
 	}
 
+
+    @GetMapping(path = "buscar/{codigo}")
+    public ClientesModelo buscaPorID(@PathVariable("codigo") Integer codigo ) {
+		Optional<ClientesModelo> cliente = rep.findById(codigo);
+		return cliente.get();
+    }	
+	
 }
