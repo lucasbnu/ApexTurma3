@@ -41,7 +41,7 @@ public class ClientesModelo {
 		this.ativo = ativo;
 	}
 
-@Id	
+   @Id	
    @GeneratedValue(strategy = GenerationType.IDENTITY )
    @Column(name="id_cliente")
    private int id_cliente;	
